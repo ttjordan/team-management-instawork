@@ -1,0 +1,30 @@
+# Ignore SQLite database
+db.sqlite3
+
+# macOS system files
+.DS_Store
+
+# Python environment version file
+.python-version
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore Django migrations cache
+team_management/members/migrations/__pycache__/
+team_management/members/migrations/*.pyc
+
+# Ignore IDE configuration files
+.idea/
+
+# Ignore node_modules (React dependencies)
+frontend/node_modules/
+frontend/package-lock.json
+
+# Ignore build files
+frontend/build/
+
+# Ignore environment files
+.env
+
