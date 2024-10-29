@@ -48,6 +48,10 @@ function TeamMemberAdd() {
     addMemberMutation.mutate(formData);
   };
 
+  const handleCancel = () => {
+    navigate('/');
+  };
+
   return (
     <div className="form-container">
       <h2 className="form-header">Add a team member</h2>
@@ -108,6 +112,9 @@ function TeamMemberAdd() {
 
         <button type="submit" className="save-btn" disabled={loading}>
           {loading ? "Saving..." : "Save"}
+        </button>
+        <button type="button" className="cancel-btn" onClick={handleCancel}>
+          Cancel
         </button>
       </form>
     </div>

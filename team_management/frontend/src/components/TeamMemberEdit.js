@@ -76,6 +76,10 @@ function TeamMemberEdit({ memberId }) {
     }
   };
 
+  const handleCancel = () => {
+    navigate('/');
+  };
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading team member data</p>;
 
@@ -159,6 +163,9 @@ function TeamMemberEdit({ memberId }) {
         </div>
 
         <button type="submit" className="save-btn">Save</button>
+        <button type="button" className="cancel-btn" onClick={handleCancel}>
+          Cancel
+        </button>
         <button type="button" className="delete-btn" onClick={handleDelete}>Delete</button>
       </form>
     </div>
