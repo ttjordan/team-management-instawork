@@ -94,6 +94,7 @@ npm start
 + Security Settings: Secure CORS, HTTPS, and database configurations.
 + User info section could probably be reused if it happens in many places
 + Styling could be made better
++ Add python package manager such as [uv](https://docs.astral.sh/uv/)
 ## Troubleshooting
 ### Backend Issues:
 
