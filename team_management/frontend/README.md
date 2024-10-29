@@ -2,7 +2,6 @@
 This is a full-stack team management application built with Django (backend) and React (frontend). 
 The application allows users to add, edit, and delete team members, along with role assignment capabilities.
 
-
 ## Prerequisites
 ### Backend (Django and Python)
 + Python: Install Python following
@@ -29,13 +28,15 @@ python --version
 pip install -r requirements.txt
 ```
 
-### Database Migrations: Initialize the database and create necessary tables.
+### Database Migrations: 
+Initialize the database and create necessary tables.
 
 ```
 python manage.py migrate
 ```
 
-### Run Django Server: Start the backend server on http://127.0.0.1:8000/.
+### Run Django Server: 
+Start the backend server on http://127.0.0.1:8000/.
 
 ```
 python manage.py runserver
@@ -51,18 +52,20 @@ cd frontend
 ```
 npm install
 ```
-### Run React Development Server: Start the frontend server on http://localhost:3000/.
+### Run React Development Server: 
+Start the frontend server on http://localhost:3000/.
 
 ```
 npm start
 ```
-### The app should now be accessible at http://localhost:3000 with the backend API running on http://127.0.0.1:8000.
+The app should now be accessible at http://localhost:3000 with the backend API running on http://127.0.0.1:8000.
 
 ## Project Structure
-+ backend: Contains Django API and database models.
-+ frontend: Contains React components and styling.
-+ api: API requests and data handling logic.
-+ styles: Custom CSS for styling React components.
++ folders within team_management: Contains Django app and frontend app.
++ frontend: Contains React components and styling. 
+  - api: API requests and data handling logic.
+  - styles: Custom CSS for styling React components.
+  - components - react components for the views
 
 ## Usage
 ### Running the Application
@@ -83,12 +86,14 @@ npm start
 ## Development Notes
 + CORS: Disabled for development and testing. Enable CORS settings in production as needed.
 + Environment Management: Ensure pyenv and virtual environments are set up correctly when restarting your machine.
-+ Error Handling: Basic error handling implemented. Production environment should have more robust logging and monitoring.
++ Error Handling: Basic error handling implemented. Production environment should have more robust logging, error handling and monitoring.
 + Production Requirements: This app is currently set up for development. For production, you may want to implement:
 + Unit & Integration Tests: Add tests for API endpoints and React components.
 + Logging & Tracing: Set up logging for backend operations.
 + CI/CD: Continuous Integration and Deployment scripts.
 + Security Settings: Secure CORS, HTTPS, and database configurations.
++ User info section could probably be reused if it happens in many places
++ Styling could be made better
 ## Troubleshooting
 ### Backend Issues:
 
