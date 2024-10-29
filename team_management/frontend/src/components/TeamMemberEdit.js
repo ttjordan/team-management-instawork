@@ -12,6 +12,7 @@ function TeamMemberEdit({ memberId }) {
     queryKey: ['teamMembers', memberId],
     queryFn: () => fetchTeamMembers(memberId),
     enabled: !!memberId,
+    onError: () => alert("Error loading team member data"),
   });
 
   const [formData, setFormData] = useState({
@@ -40,6 +41,7 @@ function TeamMemberEdit({ memberId }) {
       queryClient.invalidateQueries(['teamMembers']);
       navigate('/');
     },
+    onError: () => alert("Failed to edit team member. Please try again."),
   });
 
   const deleteMutation = useMutation({
@@ -48,6 +50,7 @@ function TeamMemberEdit({ memberId }) {
       queryClient.invalidateQueries(['teamMembers']);
       navigate('/');
     },
+    onError: () => alert("Failed to delete team member. Please try again."),
   });
 
   const handleChange = (e) => {
@@ -60,6 +63,10 @@ function TeamMemberEdit({ memberId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!/^\d+$/.test(formData.phone_number)) {
+      alert("Phone number should contain only digits.");
+      return;
+    }
     editMutation.mutate({ id: memberId, ...formData });
   };
 

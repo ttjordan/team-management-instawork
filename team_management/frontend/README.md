@@ -1,4 +1,19 @@
+
+ ### `python manage.py runserver`
+
+  ### `pyenv local team-management-instawork`
+
+project created npx create-react-app frontend
+
+### `eval "$(pyenv init -)"`
+
+### `if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi`
+
+
+
 # Getting Started with Create React App
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

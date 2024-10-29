@@ -7,6 +7,7 @@ import '../styles/TeamMember.css';
 function TeamMemberAdd() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -20,7 +21,12 @@ function TeamMemberAdd() {
     mutationFn: addTeamMember,
     onSuccess: () => {
       queryClient.invalidateQueries(['teamMembers']);
+      setLoading(false);
       navigate('/');
+    },
+    onError: () => {
+      setLoading(false);
+      alert("Failed to add team member. Please try again.");
     },
   });
 
@@ -34,6 +40,11 @@ function TeamMemberAdd() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!/^\d+$/.test(formData.phone_number)) {
+      alert("Phone number should contain only digits.");
+      return;
+    }
+    setLoading(true);
     addMemberMutation.mutate(formData);
   };
 
@@ -95,7 +106,9 @@ function TeamMemberAdd() {
           </select>
         </div>
 
-        <button type="submit" className="save-btn">Save</button>
+        <button type="submit" className="save-btn" disabled={loading}>
+          {loading ? "Saving..." : "Save"}
+        </button>
       </form>
     </div>
   );
