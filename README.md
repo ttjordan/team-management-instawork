@@ -34,7 +34,7 @@ pyenv install 3.13.0
 
 ```
 pyenv virtualenv 3.13.0 team-management-instawork
-pyenv local myproject
+pyenv local team-management-instawork
 pyenv versions
 ```
 
