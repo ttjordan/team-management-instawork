@@ -6,7 +6,38 @@ The application allows users to add, edit, and delete team members, along with r
 ### Backend (Django and Python)
 + Python: Install Python following
 [this guide](https://medium.com/marvelous-mlops/the-rightway-to-install-python-on-a-mac-f3146d9d9a32) 
-for Mac users to ensure proper setup with pyenv.
+for Mac users to ensure proper setup with pyenv. This was tested using zsh shell. [installing zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
++ Install XCode Command Line Tools
+```
+xcode-select --install
+```
++ Install HomeBrew
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew update
+brew upgrade
+```
++ Install Pyenv
+```
+brew install pyenv pyenv-virtualenv
+```
+```
+eval "$(pyenv init -)"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+```
++ Restart all your terminals to ensure pyenv is initialized.
++ Install Python 3.13.0
+```
+pyenv install 3.13.0
+```
++ create a virtual environment
+
+```
+pyenv virtualenv 3.13.0 team-management-instawork
+pyenv local myproject
+pyenv versions
+```
+
 + Django: This application uses Django and Django Rest Framework for the backend API.
 ### Frontend (React)
 + Node.js and npm: Required for running the React frontend.
