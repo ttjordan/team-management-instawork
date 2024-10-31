@@ -49,8 +49,12 @@ Set up Python environment:
 
 ```
 pyenv local team-management-instawork
+```
+```
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+```
+```
 python --version
 ```
 ### Install Dependencies:
