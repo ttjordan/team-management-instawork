@@ -38,7 +38,7 @@ pyenv local team-management-instawork
 pyenv versions
 ```
 
-+ Django: This application uses Django and Django Rest Framework for the backend API.
+## Django: This application uses Django and Django Rest Framework for the backend API.
 ### Frontend (React)
 + Node.js and npm: Required for running the React frontend.
 + React: The frontend is built with create-react-app.
