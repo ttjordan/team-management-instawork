@@ -11,7 +11,7 @@ function TeamMemberEdit() {
 
   const { data: member, isLoading, error } = useQuery({
     queryKey: ['teamMembers', memberId],
-    queryFn: () => fetchTeamMembers(memberId),
+    queryFn: () => fetchTeamMembers(String(memberId)),
     enabled: !!memberId,
     onError: () => alert("Error loading team member data"),
   });
@@ -25,12 +25,6 @@ function TeamMemberEdit() {
   });
 
   useEffect(() => {
-    if (!memberId) {
-      alert("Invalid member ID.");
-      navigate('/'); // Redirect if memberId is invalid
-      return;
-    }
-
     if (member) {
       setFormData({
         first_name: member.first_name,
@@ -40,10 +34,10 @@ function TeamMemberEdit() {
         role: member.role,
       });
     }
-  }, [member, memberId, navigate]);
+  }, [member]);
 
   const editMutation = useMutation({
-    mutationFn: editTeamMember,
+    mutationFn: (data) => editTeamMember(memberId, data),
     onSuccess: () => {
       queryClient.invalidateQueries(['teamMembers']);
       navigate('/');
@@ -52,7 +46,7 @@ function TeamMemberEdit() {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: deleteTeamMember,
+    mutationFn: () => deleteTeamMember(memberId),
     onSuccess: () => {
       queryClient.invalidateQueries(['teamMembers']);
       navigate('/');
@@ -74,12 +68,12 @@ function TeamMemberEdit() {
       alert("Phone number should contain only digits.");
       return;
     }
-    editMutation.mutate({ id: memberId, ...formData });
+    editMutation.mutate(formData);
   };
 
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this team member?')) {
-      deleteMutation.mutate(memberId);
+      deleteMutation.mutate();
     }
   };
 
