@@ -4,15 +4,16 @@ const api = axios.create({
   baseURL: 'http://127.0.0.1:8000/api',
 });
 
-export const fetchTeamMembers = async () => {
+export const fetchTeamMembers = async (id = null) => {
   try {
-    const res = await api.get('teammembers');
+    const res = id ? await api.get(`teammembers/${id}/`) : await api.get('teammembers');
     return res.data;
   } catch (error) {
     console.error("Error fetching team members:", error);
     throw error;
   }
 };
+
 
 export const addTeamMember = async (data) => {
   try {

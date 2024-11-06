@@ -8,10 +8,10 @@ function TeamMemberList() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const { data: teamMembers = [], isLoading, error } = useQuery({
-    queryKey: ['teamMembers'],
-    queryFn: fetchTeamMembers,
-  });
+const { data: teamMembers = [], isLoading, error } = useQuery({
+  queryKey: ['teamMembers'],
+  queryFn: () => fetchTeamMembers(),  // Ensures fetchTeamMembers is called without id
+});
 
   const deleteMutation = useMutation({
     mutationFn: deleteTeamMember,
@@ -45,7 +45,7 @@ function TeamMemberList() {
       </div>
       <p className="subheader">You have {teamMembers.length} team members.</p>
       <ul>
-        {teamMembers.map(member => (
+        {teamMembers.map((member) => (
           <li key={member.id} className="list-item">
             <img src="https://via.placeholder.com/40" alt="Avatar" />
             <div className="list-item-info">

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchTeamMembers, editTeamMember, deleteTeamMember } from '../api/teamMemberApi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/TeamMember.css';
 
-function TeamMemberEdit({ memberId }) {
+function TeamMemberEdit() {
+  const { memberId } = useParams();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
@@ -24,6 +25,12 @@ function TeamMemberEdit({ memberId }) {
   });
 
   useEffect(() => {
+    if (!memberId) {
+      alert("Invalid member ID.");
+      navigate('/'); // Redirect if memberId is invalid
+      return;
+    }
+
     if (member) {
       setFormData({
         first_name: member.first_name,
@@ -33,7 +40,7 @@ function TeamMemberEdit({ memberId }) {
         role: member.role,
       });
     }
-  }, [member]);
+  }, [member, memberId, navigate]);
 
   const editMutation = useMutation({
     mutationFn: editTeamMember,
